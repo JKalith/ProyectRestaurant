@@ -81,7 +81,7 @@ public class LoginAdmin extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 580, -1, -1));
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 560, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("DialogInput", 0, 15)); // NOI18N
@@ -130,8 +130,9 @@ public class LoginAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

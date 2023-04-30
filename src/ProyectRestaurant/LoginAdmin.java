@@ -218,6 +218,10 @@ public void systemLog(){
 String user = boxTextUser.getText();
 
 String password = String.valueOf(boxTextPass.getPassword());
+
+
+
+
     if ((user.equals("Admin123"))&&(password.compareTo("1234")==0)) {
         
 //JOptionPane.showMessageDialog(null,"Bienvenido al Sistema");

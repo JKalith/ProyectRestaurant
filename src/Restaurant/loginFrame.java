@@ -27,16 +27,16 @@ public class loginFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        txtUser = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        pnlLogin = new javax.swing.JPanel();
+        lbUser = new javax.swing.JLabel();
+        lbPassword = new javax.swing.JLabel();
+        passfAcount = new javax.swing.JPasswordField();
+        tfUser = new javax.swing.JTextField();
+        lbWelcome = new javax.swing.JLabel();
+        lbUserImg = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JToggleButton();
+        lbBackgroundLog = new javax.swing.JLabel();
+        lbBackgroundFrame = new javax.swing.JLabel();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -45,79 +45,79 @@ public class loginFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jPanel1.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        jPanel1.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLogin.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        pnlLogin.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        pnlLogin.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        pnlLogin.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        pnlLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 40)); // NOI18N
-        jLabel1.setText("Usuario");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 344, 46));
+        lbUser.setFont(new java.awt.Font("Agency FB", 0, 40)); // NOI18N
+        lbUser.setText("Usuario");
+        pnlLogin.add(lbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 344, 46));
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 40)); // NOI18N
-        jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 344, -1));
+        lbPassword.setFont(new java.awt.Font("Agency FB", 0, 40)); // NOI18N
+        lbPassword.setText("Contraseña");
+        pnlLogin.add(lbPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 344, -1));
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        passfAcount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passfAcount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passfAcountActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 560, 344, 55));
+        pnlLogin.add(passfAcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 560, 344, 55));
 
-        txtUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtUser.addActionListener(new java.awt.event.ActionListener() {
+        tfUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserActionPerformed(evt);
+                tfUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 344, 55));
+        pnlLogin.add(tfUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 344, 55));
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
-        jLabel3.setText("Bienvenido");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 230, -1, 90));
+        lbWelcome.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
+        lbWelcome.setText("Bienvenido");
+        pnlLogin.add(lbWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 230, -1, 90));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Emoployer.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, 130, 120));
+        lbUserImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Emoployer.png"))); // NOI18N
+        pnlLogin.add(lbUserImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, 130, 120));
 
-        jToggleButton1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jToggleButton1.setText("Ingresar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        btnLogin.setText("Ingresar");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 630, 100, 40));
+        pnlLogin.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 630, 100, 40));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Difuminado 1_1.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel4.setMaximumSize(new java.awt.Dimension(1122, 1000));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 570, 830));
+        lbBackgroundLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Difuminado 1_1.jpg"))); // NOI18N
+        lbBackgroundLog.setText("jLabel4");
+        lbBackgroundLog.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lbBackgroundLog.setMaximumSize(new java.awt.Dimension(1122, 1000));
+        pnlLogin.add(lbBackgroundLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 570, 830));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo-azul.jpg"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        jLabel7.setPreferredSize(new java.awt.Dimension(1920, 1080));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -180, 2340, 1210));
+        lbBackgroundFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo-azul.jpg"))); // NOI18N
+        lbBackgroundFrame.setText("jLabel7");
+        lbBackgroundFrame.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        pnlLogin.add(lbBackgroundFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -180, 2340, 1210));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 2100, -1));
+        getContentPane().add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 2100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-       txtUser.setText("hola");
-    }//GEN-LAST:event_txtUserActionPerformed
+    private void tfUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserActionPerformed
+       tfUser.setText("hola");
+    }//GEN-LAST:event_tfUserActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        systemLog();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passfAcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfAcountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passfAcountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,17 +154,58 @@ public class loginFrame extends javax.swing.JFrame {
         });
     }
 
+    
+    
+    
+    
+    
+    
+    
+    public void systemLog(){
+  
+String user = tfUser.getText();
+
+String password = String.valueOf(passfAcount.getPassword());
+
+
+
+
+    if ((user.equals("A"))&&(password.compareTo("1")==0)) {
+        
+//JOptionPane.showMessageDialog(null,"Bienvenido al Sistema");
+WaiterFrame form = new WaiterFrame();
+        form.setVisible(true);
+        
+     
+        this.dispose();
+    } else {
+//         JOptionPane.showMessageDialog(null,"Error vuelva a intentarlo"); 
+         tfUser.setText("");
+         passfAcount.setText(null);
+    }
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnLogin;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTextField txtUser;
+    private javax.swing.JLabel lbBackgroundFrame;
+    private javax.swing.JLabel lbBackgroundLog;
+    private javax.swing.JLabel lbPassword;
+    private javax.swing.JLabel lbUser;
+    private javax.swing.JLabel lbUserImg;
+    private javax.swing.JLabel lbWelcome;
+    private javax.swing.JPasswordField passfAcount;
+    private javax.swing.JPanel pnlLogin;
+    private javax.swing.JTextField tfUser;
     // End of variables declaration//GEN-END:variables
 }
+

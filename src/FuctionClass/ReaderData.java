@@ -113,6 +113,7 @@ public class ReaderData {
 
         for (Menu listStudent1 : list) {
             System.out.println(listStudent1);
+          
         }
         
     }

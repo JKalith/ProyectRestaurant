@@ -60,18 +60,5 @@ public class Orders {
             line = reader.readLine();
         }
         reader.close();
-    }
-    catch (NumberFormatException e
-        ) {   JOptionPane.showMessageDialog(null, "Opción invalida.");
-        return;
-    }
-    catch (IOException e ) {
-            JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
-        return;
-    }
-
-    JOptionPane.showMessageDialog (
-            
-
-null,"Opción invalida.");
     }}
+ 

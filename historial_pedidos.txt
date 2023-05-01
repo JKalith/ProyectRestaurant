@@ -1,0 +1,3 @@
+Lugar a donde va el pedido, cliente, pedido.
+Cocina,Jorshua Solórzano,Hamburguesa, Pizza, Sopa
+Bar,Jorshua Solórzano,Cerveza, Vino, Refresco

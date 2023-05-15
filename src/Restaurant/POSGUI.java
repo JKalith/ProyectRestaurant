@@ -1,134 +1,173 @@
-package Restaurant;
+package Mesero;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import Mesero.InterPedido;
 
 /**
  *
  * @author Jorshua Solorzano
  */
-public class POSGUI extends javax.swing.JFrame implements ActionListener {
+public class POSGUI extends javax.swing.JFrame {
 
     public POSGUI() {
+       
         // establecer el título de la ventana
-        super("POS para Restaurante");
-
-        // configurar los elementos de la interfaz gráfica
-        lblCustomerName = new JLabel("Nombre del Cliente: ");
-        lblOrder = new JLabel("Pedido: ");
-        txtCustomerName = new JTextField(20);
-        txtOrder = new JTextArea(10, 20);
-        jPanel1 = new JPanel();
-        btnSendToKitchen = new JButton("Enviar a la Cocina");
-        btnSendToBar = new JButton("Enviar al Bar");
-        // crear un menú desplegable con los alimentos y bebidas disponibles
-        String[] menuItems = {"Hamburguesa", "Pizza", "Ensalada", "Sopa", "Cerveza", "Vino", "Refresco", "Agua"};
-        cmbMenu = new JComboBox<>(menuItems);
-
-        // establecer el diseño de la interfaz gráfica
-        jPanel1.add(lblCustomerName);
-        jPanel1.add(txtCustomerName);
-        jPanel1.add(lblOrder);
-        jPanel1.add(txtOrder);
-        jPanel1.add(btnSendToKitchen);
-        jPanel1.add(btnSendToBar);
-        jPanel1.add(cmbMenu);
-        // agregar el panel a la ventana
-        add(jPanel1);
-
-        // Establece los manejadores de eventos para los botones
-        btnSendToKitchen.addActionListener(this);
-        btnSendToBar.addActionListener(this);
-        cmbMenu.addActionListener(this);
-        // Configura las propiedades de la ventana
-        setSize(400, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        super("Punto de venta restaurante Macakos");
+         initComponents();
+         
     }
 
-    @SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnMesa9 = new javax.swing.JButton();
+        pnlPrincipal = new javax.swing.JPanel();
+        lblMesas = new javax.swing.JLabel();
+        jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        lblCustomerName = new javax.swing.JLabel();
-        lblOrder = new javax.swing.JLabel();
-        txtCustomerName = new javax.swing.JTextField();
-        btnSendToKitchen = new javax.swing.JButton();
-        btnSendToBar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtOrder = new javax.swing.JTextArea();
-        cmbMenu = new javax.swing.JComboBox<>();
+        btnMesa1 = new javax.swing.JButton();
+        btnMesa2 = new javax.swing.JButton();
+        btnMesa5 = new javax.swing.JButton();
+        btnMesa3 = new javax.swing.JButton();
+        btnMesa4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(185, 214, 243));
+        lblMesas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblMesas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMesas.setText("Mesas");
 
-        lblCustomerName.setText("Nombre del cliente:");
+        jSplitPane1.setDividerLocation(200);
 
-        lblOrder.setText("Pedido:");
+        btnMesa1.setBackground(new java.awt.Color(153, 153, 153));
+        btnMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazMesero/mesa-del-comedor.png"))); // NOI18N
+        btnMesa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa1ActionPerformed(evt);
+            }
+        });
 
-        btnSendToKitchen.setText("Enviar a la cocina");
+        btnMesa2.setBackground(new java.awt.Color(153, 153, 153));
+        btnMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazMesero/mesa-del-comedor.png"))); // NOI18N
+        btnMesa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa2ActionPerformed(evt);
+            }
+        });
 
-        btnSendToBar.setText("Enviar al bar");
+        btnMesa5.setBackground(new java.awt.Color(153, 153, 153));
+        btnMesa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazMesero/mesa-del-comedor.png"))); // NOI18N
+        btnMesa5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa5ActionPerformed(evt);
+            }
+        });
 
-        txtOrder.setColumns(20);
-        txtOrder.setRows(5);
-        jScrollPane1.setViewportView(txtOrder);
+        btnMesa3.setBackground(new java.awt.Color(153, 153, 153));
+        btnMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazMesero/mesa-del-comedor.png"))); // NOI18N
+        btnMesa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa3ActionPerformed(evt);
+            }
+        });
 
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btnMesa4.setBackground(new java.awt.Color(153, 153, 153));
+        btnMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazMesero/mesa-del-comedor.png"))); // NOI18N
+        btnMesa4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMesa4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblOrder)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtCustomerName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCustomerName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                                .addComponent(cmbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSendToBar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSendToKitchen))))
-                .addGap(146, 146, 146))
+                    .addComponent(btnMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCustomerName)
-                    .addComponent(cmbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(lblOrder)
+                .addComponent(btnMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnSendToKitchen)
-                .addGap(18, 18, 18)
-                .addComponent(btnSendToBar)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addComponent(btnMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 969, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 557, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1)
+        );
+
+        jSplitPane1.setRightComponent(jPanel2);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("Pedidos");
+
+        javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
+        pnlPrincipal.setLayout(pnlPrincipalLayout);
+        pnlPrincipalLayout.setHorizontalGroup(
+            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lblMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(404, 404, 404))
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlPrincipalLayout.setVerticalGroup(
+            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,20 +175,38 @@ public class POSGUI extends javax.swing.JFrame implements ActionListener {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
+        InterPedido frame = new InterPedido();
+        jDesktopPane1.add(frame);
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnMesa1ActionPerformed
+
+    private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa2ActionPerformed
+
+    private void btnMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa3ActionPerformed
+
+    private void btnMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa4ActionPerformed
+
+    private void btnMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa5ActionPerformed
 
     public static void main(String args[]) {
         // Crea una instancia de la interfaz gráfica
@@ -159,53 +216,22 @@ public class POSGUI extends javax.swing.JFrame implements ActionListener {
             }
         });
     }
+//
 
-    public void actionPerformed(ActionEvent e) {
-        // Maneja los eventos del botón
-        if (e.getSource() == btnSendToKitchen) {
-            enviarPedido("cocina");
-        } else if (e.getSource() == btnSendToBar) {
-            enviarPedido("bar");
-        } else if (e.getSource() == cmbMenu) {
-            String selectedItem = cmbMenu.getSelectedItem().toString();
-            txtOrder.append(selectedItem + "\n");
-        }
-    }
-
-    private void enviarPedido(String destino) {
-        // Obtener el nombre del cliente y el pedido
-        String nombreCliente = txtCustomerName.getText();
-        String pedido = txtOrder.getText();
-
-        // Enviar el pedido al destino seleccionado
-        if (destino.equals("cocina")) {
-            System.out.println("Pedido para " + nombreCliente + " enviado a la cocina: " + pedido);
-            guardarPedido("Cocina", nombreCliente, pedido);
-        } else if (destino.equals("bar")) {
-            System.out.println("Pedido para " + nombreCliente + " enviado al bar: " + pedido);
-            guardarPedido("Bar", nombreCliente, pedido);
-        }
-    }
-
-    private void guardarPedido(String destino, String nombreCliente, String pedido) {
-        // Guardar el pedido en un archivo de texto para el historial
-        try {
-            FileWriter writer = new FileWriter("historial_pedidos.txt", true);
-            writer.write(destino + "," + nombreCliente + "," + pedido );
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSendToBar;
-    private javax.swing.JButton btnSendToKitchen;
-    private javax.swing.JComboBox<String> cmbMenu;
+    private javax.swing.JButton btnMesa1;
+    private javax.swing.JButton btnMesa2;
+    private javax.swing.JButton btnMesa3;
+    private javax.swing.JButton btnMesa4;
+    private javax.swing.JButton btnMesa5;
+    private javax.swing.JButton btnMesa9;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCustomerName;
-    private javax.swing.JLabel lblOrder;
-    private javax.swing.JTextField txtCustomerName;
-    private javax.swing.JTextArea txtOrder;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblMesas;
+    private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }
+

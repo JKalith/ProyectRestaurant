@@ -1,0 +1,12 @@
+Lugar a donde va el pedido, cliente, pedido.
+
+Cocina,Jorshua,Hamburguesa
+Pizza
+Ensalada
+Bar,Jorshua,Cerveza
+Agua
+Cocina,,Hamburguesa
+
+Pizza
+Ensalada
+Arroz con camarones

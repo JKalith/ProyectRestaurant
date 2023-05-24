@@ -45,10 +45,8 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(500, 400));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BgPanel.setPreferredSize(new java.awt.Dimension(500, 400));
-        BgPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jDesktopPane_MenuBoxLayout = new javax.swing.GroupLayout(jDesktopPane_MenuBox);
         jDesktopPane_MenuBox.setLayout(jDesktopPane_MenuBoxLayout);
@@ -60,8 +58,6 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
             jDesktopPane_MenuBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 360, Short.MAX_VALUE)
         );
-
-        BgPanel.add(jDesktopPane_MenuBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 510, 360));
 
         lblSteticBG1.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -87,7 +83,7 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
                 .addComponent(btnExit)
                 .addGap(255, 255, 255)
                 .addComponent(lblBoxControl)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
         lblSteticBG1Layout.setVerticalGroup(
             lblSteticBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,11 +94,8 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        BgPanel.add(lblSteticBG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
-
         lblSteticBG2.setBackground(new java.awt.Color(51, 51, 51));
         lblSteticBG2.setLayout(new java.awt.BorderLayout());
-        BgPanel.add(lblSteticBG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 800, 30));
 
         btnBoxClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/contabilidad.png"))); // NOI18N
         btnBoxClose.addActionListener(new java.awt.event.ActionListener() {
@@ -110,18 +103,14 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
                 btnBoxCloseActionPerformed(evt);
             }
         });
-        BgPanel.add(btnBoxClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 80, 80));
 
         lblBoxClose.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBoxClose.setText("Cierre de caja");
-        BgPanel.add(lblBoxClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         btnBoxOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/corte.png"))); // NOI18N
-        BgPanel.add(btnBoxOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 80, 80));
 
         lblBoxOpen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBoxOpen.setText("Apertura de caja");
-        BgPanel.add(lblBoxOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
 
         bntTableSold.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/dar-dinero.png"))); // NOI18N
         bntTableSold.addActionListener(new java.awt.event.ActionListener() {
@@ -129,13 +118,70 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
                 bntTableSoldActionPerformed(evt);
             }
         });
-        BgPanel.add(bntTableSold, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         lblTableSold.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblTableSold.setText("Ventas por mesa");
-        BgPanel.add(lblTableSold, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
-        getContentPane().add(BgPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 805, 525));
+        javax.swing.GroupLayout BgPanelLayout = new javax.swing.GroupLayout(BgPanel);
+        BgPanel.setLayout(BgPanelLayout);
+        BgPanelLayout.setHorizontalGroup(
+            BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblSteticBG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(BgPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnBoxClose, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnBoxOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addComponent(lblBoxClose)
+                        .addGap(31, 31, 31)
+                        .addComponent(lblBoxOpen))
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(bntTableSold))
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(lblTableSold)))
+                .addGap(45, 45, 45)
+                .addComponent(jDesktopPane_MenuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblSteticBG2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        BgPanelLayout.setVerticalGroup(
+            BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelLayout.createSequentialGroup()
+                .addComponent(lblSteticBG1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBoxClose, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBoxOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBoxClose)
+                            .addComponent(lblBoxOpen))
+                        .addGap(33, 33, 33)
+                        .addComponent(bntTableSold)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblTableSold))
+                    .addComponent(jDesktopPane_MenuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addComponent(lblSteticBG2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

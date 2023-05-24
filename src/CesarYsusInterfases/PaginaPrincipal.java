@@ -55,18 +55,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(800, 700));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelBG.setBackground(new java.awt.Color(223, 223, 223));
         PanelBG.setPreferredSize(new java.awt.Dimension(800, 700));
-        PanelBG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAdminName.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblAdminName.setForeground(new java.awt.Color(0, 153, 153));
         lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdminName.setText("Bienvenido Administrador");
         lblAdminName.setOpaque(true);
-        PanelBG.add(lblAdminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, -1, 30));
 
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/salida.png"))); // NOI18N
@@ -75,11 +72,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        PanelBG.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 50));
 
         lblBlackColor.setBackground(new java.awt.Color(51, 51, 51));
         lblBlackColor.setOpaque(true);
-        PanelBG.add(lblBlackColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 50));
 
         btnBoxControl.setForeground(new java.awt.Color(240, 240, 240));
         btnBoxControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/caja-registradora.png"))); // NOI18N
@@ -88,11 +83,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 btnBoxControlActionPerformed(evt);
             }
         });
-        PanelBG.add(btnBoxControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 80, 80));
 
         lblBoxControl.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBoxControl.setText("Control de caja");
-        PanelBG.add(lblBoxControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         btnMenuCharge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/menu.png"))); // NOI18N
         btnMenuCharge.addActionListener(new java.awt.event.ActionListener() {
@@ -100,11 +93,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 btnMenuChargeActionPerformed(evt);
             }
         });
-        PanelBG.add(btnMenuCharge, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 80, 80));
 
         lblChargeMenu.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblChargeMenu.setText("Cargar menu");
-        PanelBG.add(lblChargeMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
 
         btnTableControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/mesa.png"))); // NOI18N
         btnTableControl.addActionListener(new java.awt.event.ActionListener() {
@@ -112,11 +103,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 btnTableControlActionPerformed(evt);
             }
         });
-        PanelBG.add(btnTableControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, 80));
 
         lblTableControl.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblTableControl.setText("Control de mesas");
-        PanelBG.add(lblTableControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
 
         btnInventariControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/inventario.png"))); // NOI18N
         btnInventariControl.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +113,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 btnInventariControlActionPerformed(evt);
             }
         });
-        PanelBG.add(btnInventariControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, 80));
 
         lblInventaryControl.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblInventaryControl.setText("Control de inventario");
-        PanelBG.add(lblInventaryControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, -1, -1));
 
         jDesktopPane_menu.setPreferredSize(new java.awt.Dimension(100, 100));
 
@@ -143,9 +130,67 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addGap(0, 520, Short.MAX_VALUE)
         );
 
-        PanelBG.add(jDesktopPane_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 820, 520));
+        javax.swing.GroupLayout PanelBGLayout = new javax.swing.GroupLayout(PanelBG);
+        PanelBG.setLayout(PanelBGLayout);
+        PanelBGLayout.setHorizontalGroup(
+            PanelBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBGLayout.createSequentialGroup()
+                .addGap(280, 280, 280)
+                .addComponent(lblAdminName))
+            .addComponent(lblBlackColor, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(PanelBGLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(btnBoxControl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(btnMenuCharge, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(btnTableControl)
+                .addGap(90, 90, 90)
+                .addComponent(btnInventariControl))
+            .addGroup(PanelBGLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(lblBoxControl)
+                .addGap(74, 74, 74)
+                .addComponent(lblChargeMenu)
+                .addGap(56, 56, 56)
+                .addComponent(lblTableControl)
+                .addGap(38, 38, 38)
+                .addComponent(lblInventaryControl))
+            .addComponent(jDesktopPane_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        PanelBGLayout.setVerticalGroup(
+            PanelBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelBGLayout.createSequentialGroup()
+                .addGroup(PanelBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBlackColor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(PanelBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBoxControl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMenuCharge, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTableControl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInventariControl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBoxControl)
+                    .addComponent(lblChargeMenu)
+                    .addComponent(lblTableControl)
+                    .addComponent(lblInventaryControl))
+                .addGap(23, 23, 23)
+                .addComponent(jDesktopPane_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        getContentPane().add(PanelBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelBG, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

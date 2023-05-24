@@ -59,10 +59,6 @@ public class InterfaceChargeMenu extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BgPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         BorderPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
@@ -85,7 +81,7 @@ public class InterfaceChargeMenu extends javax.swing.JInternalFrame {
             BorderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BorderPanelLayout.createSequentialGroup()
                 .addComponent(btnExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
                 .addComponent(lblMenuCharge)
                 .addGap(240, 240, 240))
         );
@@ -97,14 +93,10 @@ public class InterfaceChargeMenu extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        BgPanel.add(BorderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
-
         taShowMenu.setColumns(20);
         taShowMenu.setRows(5);
         taShowMenu.setText("\t\t\t      Menu del dia");
         jScrollPane1.setViewportView(taShowMenu);
-
-        BgPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 540, 390));
 
         btnMenuElection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/carga-de-carpeta (1).png"))); // NOI18N
         btnMenuElection.addActionListener(new java.awt.event.ActionListener() {
@@ -112,11 +104,9 @@ public class InterfaceChargeMenu extends javax.swing.JInternalFrame {
                 btnMenuElectionActionPerformed(evt);
             }
         });
-        BgPanel.add(btnMenuElection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 80));
 
         lblChargeMenu.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblChargeMenu.setText("Cargar menu");
-        BgPanel.add(lblChargeMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         btnSaveElection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/flecha-de-circulo-de-disquete-a-la-derecha.png"))); // NOI18N
         btnSaveElection.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +114,9 @@ public class InterfaceChargeMenu extends javax.swing.JInternalFrame {
                 btnSaveElectionActionPerformed(evt);
             }
         });
-        BgPanel.add(btnSaveElection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 90, 70));
 
         lblSaveElecction1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblSaveElecction1.setText("Guardar eleccion");
-        BgPanel.add(lblSaveElecction1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         btnDeleteElection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CesarYsusInterfases/circulo-de-basura.png"))); // NOI18N
         btnDeleteElection.addActionListener(new java.awt.event.ActionListener() {
@@ -136,13 +124,62 @@ public class InterfaceChargeMenu extends javax.swing.JInternalFrame {
                 btnDeleteElectionActionPerformed(evt);
             }
         });
-        BgPanel.add(btnDeleteElection, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 90, 80));
 
         lblDeleteElecction.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDeleteElecction.setText("Borrar eleccion ");
-        BgPanel.add(lblDeleteElecction, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
-        getContentPane().add(BgPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 460));
+        javax.swing.GroupLayout BgPanelLayout = new javax.swing.GroupLayout(BgPanel);
+        BgPanel.setLayout(BgPanelLayout);
+        BgPanelLayout.setHorizontalGroup(
+            BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BorderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(BgPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSaveElecction1)
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMenuElection, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblChargeMenu)
+                            .addComponent(btnSaveElection, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeleteElection, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDeleteElecction))))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        BgPanelLayout.setVerticalGroup(
+            BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelLayout.createSequentialGroup()
+                .addComponent(BorderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnMenuElection, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblChargeMenu)
+                        .addGap(13, 13, 13)
+                        .addComponent(btnSaveElection)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblSaveElecction1)
+                        .addGap(23, 23, 23)
+                        .addComponent(btnDeleteElection, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDeleteElecction))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

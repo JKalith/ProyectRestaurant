@@ -1,0 +1,80 @@
+01 ,Arroz ,20, 15, 100.0, 2, 100.0>
+02 ,Frijoles ,20, 15, 100.0, 2, 100.0>
+03 ,Salsa Lisano ,12, 10, 100.0, 3, 100.0>
+04 ,Huevo ,20, 15, 100.0, 1, 100.0>
+05 ,Platano maduro ,10, 5, null, 1, null
+06 ,Natilla ,10 , 12, null, 3, null
+07 ,Pan ,10, 5, null, 1, null;
+08 ,Queso cheddar ,20, 12, null, 5, null
+09 ,Jamon ,15, 12, null, 3, null
+10 ,Mantequilla ,12, 7, null, 2, null
+11 ,Lechuga ,25, 20, null, 1, null
+12 ,Pollo ,30, 20, null, 7, null
+13 ,Tortillas ,20, 12, null, 4, null
+14 ,Queso , 15, 12, null, 3, null
+15 ,Harina ,10, 6, null, 3, null
+16 ,Leche ,15, 10, null, 2, null
+17 ,Vainilla ,10, 12, null, 3, null
+18 ,Miel ,10, 5, null, 4, null
+19 ,Avena ,10, 3, null, 2, null
+20 ,Chile dulce ,20, 18, null, 1, null
+21 ,Cebolla ,20, 118, null, 1, null
+22 ,Achiote ,20, 5, null, 3, null
+23 ,Guisantes ,20, 12, null, 3, null
+24 ,Camarones ,20, 15, null, 12, null
+25 ,Ajo ,20, 12, null, 1, null
+26 ,Culantro ,20, 12, null, 1, null
+27 ,Carne de res ,25, 18, null, 5, null
+28 ,Tomate ,15, 12, null, 1, null
+29 ,Chuleta ,20, 15, null, 4, null
+30 ,Papas ,30, 20, null, 1, null
+31 ,Aguacate ,20, 10, null, 2, null
+32 ,Pescado ,20, 12, null, 3, null
+33 ,Limon ,15, 12, null, 1, null
+34 ,Costilla de Cerdo ,20, 18, null, 6, null
+35 ,Salsa BBQ ,20, 8, null, 3, null
+36 ,Alitas de Pollo ,20, 16, null, 5, null
+37 ,Pan de hamburguesa ,30, 23, null, 4, null
+38 ,Torta de carne ,30, 23, null, 7, null
+39 ,Pepinillos ,30, 18, null, 5, null
+40 ,Torta de pollo ,20, 12, null, 4, null
+41 ,Macarrones ,20, 12, null, 3, null
+42 ,Carne molida ,20, 14, null, 6, null
+43 ,Consome ,20, 10, null, 2, null
+44 ,Hongos ,20, 10, null, 4, null
+45 ,Remolacha ,20, 10, null, 1, null
+46 ,Mayonesa ,20, 15, null, 2, null
+47 ,Repollo ,15, 8, null, 1, null
+48 ,Espinaca ,20, 12, null, 3, null
+49 ,Caracolitos ,20, 12, null, 3, null
+50 ,Atun ,20, 15, null, 5, null
+51 ,Brocoli ,20, 10, null, 4, null
+52 ,Zanahoria ,20, 12, null, 1, null
+53 ,Coliflor ,20, 10, null, 2, null
+54 ,cas ,20, 10, null, 1, null
+55 ,Tamarindo ,20, 10, null, 2, null
+56 ,Horchata ,20, 10, null, 2, null
+57 ,Coca Cola ,20, 10, null, 2, null
+58 ,Pepsi ,20, 10, null, 2, null
+59 ,Fanta Colita ,20, 10, null, 2, null
+60 ,Fanta Naranja ,20, 10, null, 2, null
+61 ,Fanta Uva ,20, 10, null, 2, null
+62 ,Ginger ale ,20, 10, null, 2, null
+63 ,Te frio de melocoton ,20, 10, null, 2, null
+64 ,Te frio de limon ,20, 10, null, 2, null
+65 ,Piña ,20, 10, null, 2, null
+66 ,Fresa ,20, 10, null, 2, null
+67 ,Mora ,20, 10, null, 2, null
+68 ,Banano ,20, 10, null, 2, null
+69 ,Margarita ,20, 10, null, 2, null
+70 ,Martini ,20, 10, null, 2, null
+71 ,Ron ,20, 10, null, 2, null
+72 ,Hierbabuena ,20, 10, null, 2, null
+73 ,Vino tinto ,20, 10, null, 2, null
+74 ,Chiliguaro ,20, 10, null, 2, null
+75 ,Tequila ,20, 10, null, 2, null
+76 ,Lata Heineken ,20, 10, null, 2, null
+77 ,Lata Imperial ,20, 10, null, 2, null
+78 ,Lata Pilsen ,20, 10, null, 2, null
+79 ,Lata Corona ,20, 10, null, 2, null
+80 ,Vino blanco ,20, 10, null, 2, zanahoria

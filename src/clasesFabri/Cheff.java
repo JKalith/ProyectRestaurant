@@ -39,10 +39,8 @@ public class Cheff extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelcheff.setBackground(new java.awt.Color(153, 153, 153));
-        panelcheff.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonexitCheff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clasesFabri/salir.png"))); // NOI18N
-        panelcheff.add(buttonexitCheff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 70));
 
         BottunorderControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clasesFabri/6811571_cooking_cookware_frying pan_kitchen_kitchenware_icon (1).png"))); // NOI18N
         BottunorderControl.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +48,6 @@ public class Cheff extends javax.swing.JFrame {
                 BottunorderControlActionPerformed(evt);
             }
         });
-        panelcheff.add(BottunorderControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 110, 60));
 
         ButtonInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clasesFabri/nhuh.png"))); // NOI18N
         ButtonInventory.addActionListener(new java.awt.event.ActionListener() {
@@ -58,15 +55,12 @@ public class Cheff extends javax.swing.JFrame {
                 ButtonInventoryActionPerformed(evt);
             }
         });
-        panelcheff.add(ButtonInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 120, 60));
 
         jLabel3.setFont(new java.awt.Font("Ravie", 3, 16)); // NOI18N
         jLabel3.setText("Gestionar inventario");
-        panelcheff.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 270, -1));
 
         jLabel1.setFont(new java.awt.Font("Ravie", 3, 16)); // NOI18N
         jLabel1.setText("Control de Pedidos");
-        panelcheff.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
 
         jDesktopPanecheff.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -81,18 +75,66 @@ public class Cheff extends javax.swing.JFrame {
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        panelcheff.add(jDesktopPanecheff, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 180, 1020, 480));
-
         lblcheffName.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblcheffName.setForeground(new java.awt.Color(0, 153, 153));
         lblcheffName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcheffName.setText("Bienvenido Cheff");
         lblcheffName.setOpaque(true);
-        panelcheff.add(lblcheffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 200, 30));
 
         lblBlackColor.setBackground(new java.awt.Color(51, 51, 51));
         lblBlackColor.setOpaque(true);
-        panelcheff.add(lblBlackColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 50));
+
+        javax.swing.GroupLayout panelcheffLayout = new javax.swing.GroupLayout(panelcheff);
+        panelcheff.setLayout(panelcheffLayout);
+        panelcheffLayout.setHorizontalGroup(
+            panelcheffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcheffLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelcheffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonexitCheff, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(380, 380, 380)
+                        .addComponent(lblcheffName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(BottunorderControl, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBlackColor, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(580, 580, 580)
+                        .addComponent(ButtonInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelcheffLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jLabel1)
+                .addGap(108, 108, 108)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jDesktopPanecheff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelcheffLayout.setVerticalGroup(
+            panelcheffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcheffLayout.createSequentialGroup()
+                .addGroup(panelcheffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonexitCheff, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblcheffName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(BottunorderControl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBlackColor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelcheffLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(ButtonInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(panelcheffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(38, 38, 38)
+                .addComponent(jDesktopPanecheff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

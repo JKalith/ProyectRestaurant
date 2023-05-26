@@ -6,6 +6,11 @@ import waiterInterface.BreakFastMenu;
 import waiterInterface.MenuMainDishes;
 import waiterInterface.ShakesMenu;
 import waiterInterface.SoftDrinksMenu;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -13,20 +18,9 @@ import waiterInterface.SoftDrinksMenu;
  */
 public class Order extends javax.swing.JInternalFrame {
 
-    private Order order;
-
-    public void addText(String text) {
-        txtPedidos.append(text);
-    }
-
     public Order() {
-
         super("Pedidos mesa #");
         initComponents();
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 
     @SuppressWarnings("unchecked")
@@ -47,9 +41,10 @@ public class Order extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         lblOrder = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtPedidos = new javax.swing.JTextArea();
+        txtOrder = new javax.swing.JTextArea();
         lblMenu = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        btnPrintOrder = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -57,7 +52,7 @@ public class Order extends javax.swing.JInternalFrame {
         setEnabled(false);
         setFocusable(false);
         setInheritsPopupMenu(true);
-        setPreferredSize(new java.awt.Dimension(1615, 854));
+        setPreferredSize(new java.awt.Dimension(1629, 828));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1684, 915));
 
@@ -130,7 +125,7 @@ public class Order extends javax.swing.JInternalFrame {
                     .addComponent(btnSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlcoholicDrinks)
                     .addComponent(btnShakes, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +142,7 @@ public class Order extends javax.swing.JInternalFrame {
                 .addComponent(btnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addComponent(btnShakes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);
@@ -163,7 +158,7 @@ public class Order extends javax.swing.JInternalFrame {
         );
         jdpMenusLayout.setVerticalGroup(
             jdpMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 657, Short.MAX_VALUE)
         );
 
         jLabel2.setText("Pedido");
@@ -172,13 +167,30 @@ public class Order extends javax.swing.JInternalFrame {
         lblOrder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOrder.setText("Pedido");
 
-        txtPedidos.setColumns(20);
-        txtPedidos.setRows(5);
-        jScrollPane1.setViewportView(txtPedidos);
+        txtOrder.setColumns(20);
+        txtOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtOrder.setRows(5);
+        jScrollPane1.setViewportView(txtOrder);
 
         lblMenu.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMenu.setText("Menú");
+
+        btnPrintOrder.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnPrintOrder.setText("Imprimir pedido");
+        btnPrintOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintOrderActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnDelete.setText("Limpiar comanda");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -196,8 +208,15 @@ public class Order extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jdpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(215, 215, 215)
+                                .addComponent(btnPrintOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(32627, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -211,46 +230,42 @@ public class Order extends javax.swing.JInternalFrame {
                         .addComponent(lblMenu)
                         .addComponent(lblOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jdpMenus, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                    .addComponent(jdpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnPrintOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(1, 1, 1)))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel3);
-
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1684, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 156, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -264,6 +279,7 @@ public class Order extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             System.out.println("e = " + e.getMessage());
         }
+
     }//GEN-LAST:event_btnMainDishesActionPerformed
 
     private void btnBreakFastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakFastActionPerformed
@@ -317,15 +333,53 @@ public class Order extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnShakesActionPerformed
 
+    private void btnPrintOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintOrderActionPerformed
+        displayOrder();
+    }//GEN-LAST:event_btnPrintOrderActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        txtOrder.setText("");
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    public void displayOrder() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("orden.txt"))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+                sb.append("\n");
+            }
+
+            String orderText = sb.toString();
+
+            // Establecer el texto en un JTextArea llamado txtOrder
+            txtOrder.setText(orderText);
+
+                        // Vaciar el contenido del archivo
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("historial_pedidos.txt", true))) {
+                writer.write(orderText);
+            } catch (IOException e) {
+            }
+        } catch (IOException e) {
+        }
+            // Vaciar el contenido del archivo
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("orden.txt", false))) {
+                writer.write(" ");
+            } catch (IOException e) {
+            }
+       
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccompaniments;
     private javax.swing.JButton btnAlcoholicDrinks;
     private javax.swing.JButton btnBreakFast;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMainDishes;
+    private javax.swing.JButton btnPrintOrder;
     private javax.swing.JButton btnShakes;
     private javax.swing.JButton btnSoftDrinks;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -335,6 +389,6 @@ public class Order extends javax.swing.JInternalFrame {
     private javax.swing.JDesktopPane jdpMenus;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblOrder;
-    private javax.swing.JTextArea txtPedidos;
+    public static javax.swing.JTextArea txtOrder;
     // End of variables declaration//GEN-END:variables
 }

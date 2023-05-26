@@ -4,7 +4,6 @@
  */
 package ProyectRestaurant;
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import ClassPackage.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import waiterInterface.POSGUI;
+import waiterInterface.Waiter;
 import AdminInterface.HomePage;
 
 /**
@@ -21,8 +20,9 @@ import AdminInterface.HomePage;
  * @author james
  */
 public class Login extends javax.swing.JFrame {
-public  static  ArrayList<User> listUser = new ArrayList<>();
-public   POSGUI posgui = new POSGUI();
+
+    public static ArrayList<User> listUser = new ArrayList<>();
+    public Waiter posgui = new Waiter();
     public User user = new User();
     HomePage homePage = new HomePage();
 
@@ -31,8 +31,8 @@ public   POSGUI posgui = new POSGUI();
      */
     public Login() throws IOException {
         initComponents();
-      
-loadUser();
+
+        loadUser();
         jpLogin.add(jpDataLogin, CENTER_ALIGNMENT);
 
     }
@@ -207,11 +207,11 @@ loadUser();
     }//GEN-LAST:event_jpDataLoginAncestorAdded
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-    try {
-       verifyAccess();
-    } catch (IOException ex) {
-        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        try {
+            verifyAccess();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -252,180 +252,118 @@ loadUser();
                 }
             }
 
-       
-        
-        
-        
-        
-        
-        
-        
-
         });
 
     }
-    
+
     /**
      * Load users within a list is used
-     * @param user
-     * Person's User
-     * @param password
-     * User password
-     * @param levelAccess
-     * Permission level to enter
-     * @param indexA
-     * index to extract data from the correct memory position
-     * @return 
-     * 
+     *
+     * @param user Person's User
+     * @param password User password
+     * @param levelAccess Permission level to enter
+     * @param indexA index to extract data from the correct memory position
+     * @return
+     *
      */
-     public User addDataU(String user, String password,String levelAccess,int indexA){
-               
-         
-     int levelA = Integer.parseInt(levelAccess);
-  User userData = new User(user, password, levelA);
+    public User addDataU(String user, String password, String levelAccess, int indexA) {
 
-listUser.add(indexA, userData);
-        
-  
+        int levelA = Integer.parseInt(levelAccess);
+        User userData = new User(user, password, levelA);
 
-                return null;
-        
-        
-        
+        listUser.add(indexA, userData);
+
+        return null;
+
+    }
+
+    /**
+     * Loads user data based on database into temporary memory
+     *
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public void loadUser() throws FileNotFoundException, IOException {
+
+        BufferedReader br = new BufferedReader(new FileReader("Usuarios.txt"));
+        String line;
+
+        int count = 0;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+            String data[] = line.split(",");
+            String userN = data[0];
+            String password = data[1];
+            String levelAccess = data[2];
+
+            addDataU(userN, password, levelAccess, count);
+
         }
-/**
- * Loads user data based on database into temporary memory
- * @throws FileNotFoundException
- * @throws IOException 
- */
-            public void loadUser() throws FileNotFoundException, IOException {
-               
-                
-                BufferedReader br = new BufferedReader(new FileReader("Usuarios.txt"));
-                String line;
-               
-                int count=0;
-                while ((line = br.readLine()) != null) {
- System.out.println(line);
-                     String data[] = line.split(",");
-                    String userN = data[0];
-                    String password = data[1];
-                    String levelAccess = data[2];
-                    
-                
-                   
-                    addDataU(userN, password, levelAccess, count);
 
-                 
+    }
+
+    /**
+     * Its function is to compare the data in the database with those provided
+     *
+     * @throws IOException
+     */
+    public void verifyAccess() throws IOException {
+
+        int count = 0;
+        String userName = jtxUser.getText();
+        String password = JpsPasswordL.getText();
+
+        for (count = 0; count < listUser.size(); count++) {
+            if (userName.equals(listUser.get(count).getUserName())) {
+                if (password.equals(listUser.get(count).getUserPassword())) {
+                    runFrame(listUser.get(count).getAccessLevel());
+
+                    break;
                 }
-             
-        
 
             }
-            
-            
-            /**
-             * Its function is to compare the data in the database with those provided
-             * @throws IOException 
-             */
-            public void verifyAccess() throws IOException{
-        
-               int count=0; 
-               String userName = jtxUser.getText();
-               String password= JpsPasswordL.getText();
-               
-                for (count = 0; count < listUser.size(); count++) {
-                        if (userName.equals(listUser.get(count).getUserName())) {
-                            if (password.equals(listUser.get(count).getUserPassword())) {
-                                 runFrame(listUser.get(count).getAccessLevel()); 
-                           
-                                break;
-                            }
-                          
-                }
-         
-               if (count>listUser.size()){
-                   
-               //Insertar un aviso contraseña incorrecta
-               
-               
-               
-               
-               
-               }
-                       
-                        
-                        
-                        
-    
-                }
-           
-         
-            
-            
-            
-            
-            
-            
+
+            if (count > listUser.size()) {
+
+                //Insertar un aviso contraseña incorrecta
             }
-            
-            
-            
-            
-            /**
-             * This method has the function of starting 
-             * a frame according to the user's access level
-             * @param levelAccess 
-             * is the indicator of where the frame should start
-             */
-            public void runFrame (int levelAccess){
-        switch(levelAccess){
-        
+
+        }
+
+    }
+
+    /**
+     * This method has the function of starting a frame according to the user's
+     * access level
+     *
+     * @param levelAccess is the indicator of where the frame should start
+     */
+    public void runFrame(int levelAccess) {
+        switch (levelAccess) {
+
             case 1:
-              //mesero
-             
-               posgui.setVisible(rootPaneCheckingEnabled);
-               
+                //mesero
+
+                posgui.setVisible(rootPaneCheckingEnabled);
+
                 dispose();
                 break;
             case 2:
-              //admin
+                //admin
                 homePage.setVisible(rootPaneCheckingEnabled);
-                 dispose();
+                dispose();
                 break;
             case 3:
-           //aqui iria la interface de cosinero
-                   posgui.setVisible(rootPaneCheckingEnabled);
-                    dispose();
-                   
-                   
+                //aqui iria la interface de cosinero
+                posgui.setVisible(rootPaneCheckingEnabled);
+                dispose();
+
                 break;
-           
-        
-        
-        
-        
-        
-        
-        
+
         }
-    
-    
-    
-    
-    
-    
-            }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField JpsPasswordL;

@@ -36,12 +36,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbBreakFasts" min="-2" pref="242" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cmbBreakFasts" min="-2" pref="242" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="spnBreakFasts" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="btnAddMD" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="55" max="32767" attributes="0"/>
@@ -58,9 +59,9 @@
                   <Component id="cmbBreakFasts" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="spnBreakFasts" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="392" max="32767" attributes="0"/>
-              <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace pref="412" max="32767" attributes="0"/>
+              <Component id="btnAddMD" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,13 +99,16 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPrint">
+    <Component class="javax.swing.JButton" name="btnAddMD">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Imprimir pedido"/>
+        <Property name="text" type="java.lang.String" value="Agregar al pedido"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddMDActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

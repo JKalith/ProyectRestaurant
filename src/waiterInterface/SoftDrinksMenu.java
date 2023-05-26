@@ -1,6 +1,9 @@
 package waiterInterface;
 
 import waiterInterface.Order;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -8,15 +11,25 @@ import waiterInterface.Order;
  */
 public class SoftDrinksMenu extends javax.swing.JInternalFrame {
 
-    private String selectedSoftDrinks;
-    private int quantitySoftDrinks;
-    private Order Order;
-
     public SoftDrinksMenu() {
         super("Menú de refrescos");
         initComponents();
     }
 
+        public void saveOrder() {
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+        String selectedSoftDrinks = (String) cmbSoftDrinks.getSelectedItem();
+        int quantitySoftDrinks = (int) spnSoftDrinks.getValue();
+
+        // Construir el texto a guardar
+        String text = "Pedido para mesa #: " + selectedSoftDrinks +", "+ quantitySoftDrinks + "\n";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("orden.txt", true))) {
+            writer.write(text);
+            writer.newLine(); 
+        } catch (IOException e) {
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,7 +38,7 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
         cmbSoftDrinks = new javax.swing.JComboBox<>();
         spnSoftDrinks = new javax.swing.JSpinner();
         lblMainDishes = new javax.swing.JLabel();
-        btnPrintSoftDrinks = new javax.swing.JButton();
+        btnAddMD = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -48,10 +61,10 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
         lblMainDishes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMainDishes.setText("Refrescos");
 
-        btnPrintSoftDrinks.setText("Imprimir pedido");
-        btnPrintSoftDrinks.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMD.setText("Agregar al pedido");
+        btnAddMD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintSoftDrinksActionPerformed(evt);
+                btnAddMDActionPerformed(evt);
             }
         });
 
@@ -70,9 +83,9 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(spnSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btnPrintSoftDrinks)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addGap(129, 129, 129)
+                        .addComponent(btnAddMD)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,16 +96,16 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
-                .addComponent(btnPrintSoftDrinks)
-                .addGap(85, 85, 85))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
+                .addComponent(btnAddMD, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,26 +119,13 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cmbSoftDrinksActionPerformed
 
-    private void btnPrintSoftDrinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintSoftDrinksActionPerformed
-
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
-        selectedSoftDrinks = (String) cmbSoftDrinks.getSelectedItem();
-        quantitySoftDrinks = (int) spnSoftDrinks.getValue();
-
-        // Verificar si el JFrame InterPedido ya está creado
-        if (Order != null) {
-            // Construir el text a agregar
-            String text = "Refresco seleccionado: " + selectedSoftDrinks + "\n";
-            text += "Cantidad de refrescos: " + quantitySoftDrinks + "\n";
-
-            // Agregar el text al JTextArea txtPedido en el JFrame InterPedido
-            Order.addText(text);
-        }
-    }//GEN-LAST:event_btnPrintSoftDrinksActionPerformed
+    private void btnAddMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMDActionPerformed
+        saveOrder();
+    }//GEN-LAST:event_btnAddMDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrintSoftDrinks;
+    public javax.swing.JButton btnAddMD;
     private javax.swing.JComboBox<String> cmbSoftDrinks;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMainDishes;

@@ -1,6 +1,9 @@
 package waiterInterface;
 
 import waiterInterface.Order;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -8,13 +11,23 @@ import waiterInterface.Order;
  */
 public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
 
-    private String selectedAlcoholicDrinks;
-    private int quantityAlcoholicDrinks;
-    private Order Order;
-
     public AlcoholicDrinksMenu() {
         super("Menú de bebidas alcoholicas");
         initComponents();
+    }
+      public void saveOrder() {
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+        String selectedAlcoholicDrinks = (String) cmbAlcoholicDrinks.getSelectedItem();
+        int quantityAlcoholicDrinks = (int) spnAlcoholicDrinks.getValue();
+
+        // Construir el texto a guardar
+        String text = "Pedido para mesa #: " + selectedAlcoholicDrinks +", "+ quantityAlcoholicDrinks + "\n";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("orden.txt", true))) {
+            writer.write(text);
+            writer.newLine(); 
+        } catch (IOException e) {
+        }
     }
 
     /**
@@ -30,7 +43,7 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
         cmbAlcoholicDrinks = new javax.swing.JComboBox<>();
         spnAlcoholicDrinks = new javax.swing.JSpinner();
         lblAlcoholicDrinks = new javax.swing.JLabel();
-        btnPrintAlcoholicDrinks = new javax.swing.JButton();
+        btnAddMD = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -53,10 +66,10 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
         lblAlcoholicDrinks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAlcoholicDrinks.setText("Bebidas alcoholicas");
 
-        btnPrintAlcoholicDrinks.setText("Imprimir pedido");
-        btnPrintAlcoholicDrinks.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMD.setText("Agregar al pedido");
+        btnAddMD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintAlcoholicDrinksActionPerformed(evt);
+                btnAddMDActionPerformed(evt);
             }
         });
 
@@ -65,19 +78,18 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(cmbAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(lblAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(btnPrintAlcoholicDrinks)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAddMD)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(79, 79, 79)
+                            .addComponent(cmbAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(spnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(92, 92, 92)
+                            .addComponent(lblAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,16 +100,16 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
-                .addComponent(btnPrintAlcoholicDrinks)
-                .addGap(86, 86, 86))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
+                .addComponent(btnAddMD, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,26 +123,13 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cmbAlcoholicDrinksActionPerformed
 
-    private void btnPrintAlcoholicDrinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintAlcoholicDrinksActionPerformed
-
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
-        selectedAlcoholicDrinks = (String) cmbAlcoholicDrinks.getSelectedItem();
-        quantityAlcoholicDrinks = (int) spnAlcoholicDrinks.getValue();
-
-        // Verificar si el JFrame InterPedido ya está creado
-        if (Order != null) {
-            // Construir el text a agregar
-            String text = "Bibidas alcoholicas seleccionadas: " + selectedAlcoholicDrinks + "\n";
-            text += "Cantidad de bebidas alcoholicas: " + quantityAlcoholicDrinks + "\n";
-
-            // Agregar el text al JTextArea txtPedido en el JFrame InterPedido
-            Order.addText(text);
-        }
-    }//GEN-LAST:event_btnPrintAlcoholicDrinksActionPerformed
+    private void btnAddMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMDActionPerformed
+        saveOrder();
+    }//GEN-LAST:event_btnAddMDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrintAlcoholicDrinks;
+    public javax.swing.JButton btnAddMD;
     private javax.swing.JComboBox<String> cmbAlcoholicDrinks;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAlcoholicDrinks;

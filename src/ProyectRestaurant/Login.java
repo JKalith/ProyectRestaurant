@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import ClassPackage.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import waiterInterface.Waiter;
 import AdminInterface.HomePage;
+import Waiter.WaiterInterface;
 
 /**
  *
@@ -22,7 +22,7 @@ import AdminInterface.HomePage;
 public class Login extends javax.swing.JFrame {
 
     public static ArrayList<User> listUser = new ArrayList<>();
-    public Waiter posgui = new Waiter();
+    WaiterInterface waiter = new WaiterInterface();
     public User user = new User();
     HomePage homePage = new HomePage();
 
@@ -344,7 +344,7 @@ public class Login extends javax.swing.JFrame {
             case 1:
                 //mesero
 
-                posgui.setVisible(rootPaneCheckingEnabled);
+                waiter.setVisible(true);
 
                 dispose();
                 break;
@@ -355,7 +355,7 @@ public class Login extends javax.swing.JFrame {
                 break;
             case 3:
                 //aqui iria la interface de cosinero
-                posgui.setVisible(rootPaneCheckingEnabled);
+                waiter.setVisible(rootPaneCheckingEnabled);
                 dispose();
 
                 break;

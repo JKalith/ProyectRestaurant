@@ -1,0 +1,71 @@
+Pedido para mesa: Sandwich de jamon y queso , 1
+Pedido para mesa: Ensalada Rusa, 3
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Sandwich de jamon y queso , 1
+Pedido para mesa: Fresco de Tamarindo, 1
+Pedido para mesa: Fresco de Limón, 1
+Pedido para mesa: Arroz con camarones, 1
+Pedido para mesa: Gallopinto especial , 1
+Pedido para mesa: Fresco de Limón, 1
+Pedido para mesa: Fresco de Cas, 2
+Pedido para mesa: Pupusa de queso y frijoles , 1
+Pedido para mesa: Sandwich de jamon y queso , 1
+Pedido para mesa: Arroz con camarones, 1
+Pedido para mesa: Gallopinto especial , 1
+Pedido para mesa: Gallopinto especial , 1
+Pedido para mesa: Sangria , 1
+Pedido para mesa: Sandwich de pollo , 2
+Pedido para mesa: Ensalada Verde, 1
+Pedido para mesa: Ensalada Verde, 1
+Pedido para mesa: Sandwich de pollo , 1
+Pedido para mesa: Sandwich de pollo , 1
+Pedido para mesa: Panqueques con miel y avena , 1
+Pedido para mesa: Pupusa de queso y frijoles , 4
+Pedido para mesa: Pupusa de queso y frijoles , 4
+Pedido para mesa: Sandwich de jamon y queso , 3
+Pedido para mesa: Sandwich de pollo , 2
+Pedido para mesa: Sandwich de jamon y queso , 1
+Pedido para mesa: Sandwich de jamon y queso , 1
+Pedido para mesa: Gallopinto especial , 3
+Pedido para mesa: Gallopinto especial , 1
+Pedido para mesa: Pupusa de queso y frijoles , 2
+Pedido para mesa: Sandwich de pollo , 1
+Pedido para mesa: Sandwich de pollo , 2
+Pedido para mesa: Gallopinto especial , 2
+Pedido para mesa: Sandwich de jamon y queso , 2
+Pedido para mesa: Gallo de sanchichon, 2
+Pedido para mesa: Omelette, 2
+Pedido para mesa: Ceviche de camarones, 1
+Pedido para mesa: Gallo pinto, 1
+Pedido para mesa: Sopa azteca, 2
+Pedido para mesa: Omelette, 2
+Pedido para mesa: Gallo pinto, 2
+Pedido para mesa: Omelette, 1
+Pedido para mesa: Gallo pinto, 1
+Pedido para mesa: javax.swing.JButton[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.5,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@299c6c62,flags=296,maximumSize=,minimumSize=,preferredSize=,defaultIcon=,disabledIcon=,disabledSelectedIcon=,margin=javax.swing.plaf.InsetsUIResource[top=2,left=14,bottom=2,right=14],paintBorder=true,paintFocus=true,pressedIcon=,rolloverEnabled=true,rolloverIcon=,rolloverSelectedIcon=,selectedIcon=,text=,defaultCapable=true]Gallo pinto, 1
+Pedido para mesa: nullGallo pinto, 1
+Pedido para mesa null Gallo pinto, 1
+Pedido para mesa null: Omelette, 1
+Pedido para mesa null: Gallo pinto, 1
+Pedido para mesa null: Gallo pinto, 2
+Pedido para mesa null: Omelette, 1
+Pedido para mesa frame0: Gallo pinto, 1
+Pedido para mesa null: Gallo pinto, 1
+Pedido para mesa null: Gallo de sanchichon, 1
+Pedido para mesa null: Gallo pinto, 2
+Pedido para mesa null: Omelette, 2
+Pedido para mesa null: Gallo pinto, 1
+Pedido para mesa : Gallo de sanchichon, 1
+Pedido para mesa null: Omelette, 2
+Pedido para mesa null: Omelette, 2
+Pedido para mesa null: Gallo pinto, 2
+Pedido para mesa: nullGallo pinto, 1
+Pedido para mesa: nullOmelette, 3
+Pedido para mesa: nullGallo pinto, 2

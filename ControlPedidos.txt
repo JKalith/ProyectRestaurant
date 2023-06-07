@@ -1,0 +1,7 @@
+1, Sin asignar, D2, Gallo de sanchichon, 6, 5
+2, Sin asignar, D2, Gallo de sanchichon, 6, 5
+3, Sin asignar, D2, Gallo de sanchichon, 6, 5
+2, Sin asignar, D2, Gallo de sanchichon, 6, 5
+2, Sin asignar, D2, Gallo de sanchichon, 6, 5
+1, Sin asignar, D2, Gallo de sanchichon, 6, 5
+	

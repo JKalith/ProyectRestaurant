@@ -41,11 +41,11 @@
                       <Component id="spnBreakFasts" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                       <Component id="btnAddBF" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,9 +59,9 @@
                   <Component id="cmbBreakFasts" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="spnBreakFasts" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="412" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               <Component id="btnAddBF" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,13 +70,8 @@
     <Component class="javax.swing.JComboBox" name="cmbBreakFasts">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="1">
             <StringItem index="0" value="Elegir..."/>
-            <StringItem index="1" value="Gallopinto especial "/>
-            <StringItem index="2" value="Sandwich de jamon y queso "/>
-            <StringItem index="3" value="Sandwich de pollo "/>
-            <StringItem index="4" value="Pupusa de queso y frijoles "/>
-            <StringItem index="5" value="Panqueques con miel y avena "/>
           </StringArray>
         </Property>
       </Properties>

@@ -1,31 +1,50 @@
 package Waiter;
 
 import static Waiter.Order.txtOrder;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
+ * Este JInternal frame se encarga de mostrar el menú de desayunos, aquí se van
+ * a gestionar los desayunos escogidos y su cantidad.
  *
  * @author Jorshua Solorzano
  */
 public class BreakFastMenu extends javax.swing.JInternalFrame {
 
-    public BreakFastMenu() {
+    String tableName = "";
+
+    public BreakFastMenu(String table) {
+        // Establecer el título de la ventana
         super("Menú de desayunos");
         initComponents();
+        try {
+            filter();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BreakFastMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.tableName = table;
+    }
+
+    public String getButtonName(JButton button) {
+        String buttonName = button.getName();
+        return buttonName;
     }
 
     public void saveOrder(JTextArea txtOrder) {
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox cmbBreakFasts y el JSpinner spnBreakFasts, respectivamente.
         String selectedBreakFast = (String) cmbBreakFasts.getSelectedItem();
         int quantityBreakfasts = (int) spnBreakFasts.getValue();
 
-        // Verificar si se ha seleccionado una opción válida en el JComboBox y el JSpinner
+        // Verificar si se ha seleccionado una opción válida en el JComboBox cmbBreakFasts y el JSpinner spnBreakFasts.
         if (selectedBreakFast.equals("Elegir...") || quantityBreakfasts == 0) {
             // Mostrar un mensaje de error 
             JOptionPane.showMessageDialog(null, "Debe seleccionar una opción válida");
@@ -33,42 +52,44 @@ public class BreakFastMenu extends javax.swing.JInternalFrame {
         }
 
         // Construir el texto a guardar
-        StringBuilder textBuilder = new StringBuilder("Pedido para mesa: ");
-
+        StringBuilder textBuilder = new StringBuilder(tableName + ", ");
+        textBuilder.append("Sin asignar, ");
+        //Guardar las opciones de desayunos seleccionados que sean validos.
         if (!selectedBreakFast.equals("Elegir...")) {
             textBuilder.append(selectedBreakFast).append(", ");
         }
-
+        //Guardar las cantidades de desayunos seleccionados que sean validos.
         if (quantityBreakfasts != 0) {
             textBuilder.append(quantityBreakfasts);
         }
 
         String text = textBuilder.toString() + "\n";
 
+        // Agregar la información al txtOrder del JInternal frame Order
+        txtOrder.append(text);
+        //Guardar como nuevo pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
+        //Guardar en los pedidos que van para la cocina
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Kitchen.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
-
-        // Agregar la información al JTextArea de destino
-        txtOrder.append(text);
-
+        //Guardar los datos en el historial del punto de venta
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Historial.txt", true))) {
             writer.write(text);
         } catch (IOException e) {
         }
-
-        // Vaciar el contenido del archivo
+        // Vaciar el contenido del archivo para darle campo al siguiente pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", false))) {
             writer.write(" ");
         } catch (IOException e) {
         }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -86,7 +107,7 @@ public class BreakFastMenu extends javax.swing.JInternalFrame {
         setInheritsPopupMenu(true);
         setPreferredSize(new java.awt.Dimension(455, 657));
 
-        cmbBreakFasts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir...", "Gallopinto especial ", "Sandwich de jamon y queso ", "Sandwich de pollo ", "Pupusa de queso y frijoles ", "Panqueques con miel y avena " }));
+        cmbBreakFasts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir..." }));
 
         lblBreakFasts.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblBreakFasts.setText("Desayunos");
@@ -115,9 +136,9 @@ public class BreakFastMenu extends javax.swing.JInternalFrame {
                         .addGap(46, 46, 46)
                         .addComponent(spnBreakFasts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
+                        .addGap(145, 145, 145)
                         .addComponent(btnAddBF)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,18 +149,23 @@ public class BreakFastMenu extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbBreakFasts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnBreakFasts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
+                .addGap(88, 88, 88)
                 .addComponent(btnAddBF, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+        //Tiene la funcionabilidad de guardar el pedido
     private void btnAddBFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBFActionPerformed
         saveOrder(txtOrder);
     }//GEN-LAST:event_btnAddBFActionPerformed
 
+    public void filter() throws FileNotFoundException {
+        MealMap mealmap = new MealMap();
+        String[] filter = {"D"};
+        mealmap.filtrarPorCodigo(filter, cmbBreakFasts, spnBreakFasts);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddBF;

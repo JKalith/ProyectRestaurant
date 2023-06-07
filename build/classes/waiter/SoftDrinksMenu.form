@@ -27,12 +27,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="439" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="443" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="616" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="628" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -53,10 +53,10 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMainDishes" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cmbSoftDrinks" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblMainDishes" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="cmbSoftDrinks" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Component id="spnSoftDrinks" min="-2" pref="48" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -66,7 +66,7 @@
                           <Component id="btnAddMD" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="117" max="32767" attributes="0"/>
+                  <EmptySpace pref="151" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -91,20 +91,8 @@
         <Component class="javax.swing.JComboBox" name="cmbSoftDrinks">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="13">
+              <StringArray count="1">
                 <StringItem index="0" value="Elegir..."/>
-                <StringItem index="1" value="Fresco de Lim&#xf3;n"/>
-                <StringItem index="2" value="Fresco de Cas"/>
-                <StringItem index="3" value="Fresco de Tamarindo"/>
-                <StringItem index="4" value="Fresco Horchata"/>
-                <StringItem index="5" value="Coca Cola"/>
-                <StringItem index="6" value="Pepsi"/>
-                <StringItem index="7" value="Fanta Colita"/>
-                <StringItem index="8" value="Fanta Naranja"/>
-                <StringItem index="9" value="Fanta Uva"/>
-                <StringItem index="10" value="Ginger ale"/>
-                <StringItem index="11" value="Te frio de melocot&#xf3;n"/>
-                <StringItem index="12" value="Te frio de Lim&#xf3;n"/>
               </StringArray>
             </Property>
           </Properties>

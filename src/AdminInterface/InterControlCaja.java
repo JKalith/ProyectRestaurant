@@ -145,7 +145,7 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
                     .addGroup(BgPanelLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(lblTableSold)))
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(jDesktopPane_MenuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(lblSteticBG2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
@@ -153,10 +153,9 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
             BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelLayout.createSequentialGroup()
                 .addComponent(lblSteticBG1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
                 .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgPanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(60, 60, 60)
                         .addGroup(BgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBoxClose, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBoxOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,8 +166,10 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
                         .addComponent(bntTableSold)
                         .addGap(0, 0, 0)
                         .addComponent(lblTableSold))
-                    .addComponent(jDesktopPane_MenuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addGroup(BgPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jDesktopPane_MenuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(62, 62, 62)
                 .addComponent(lblSteticBG2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -195,14 +196,7 @@ public class InterControlCaja extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntTableSoldActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-         ActionListener closeSystem = new ActionListener(){
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose(); // Cierra la ventana actual
-        }
-    };
-    // Asignar el detector de acción al botón
-    btnExit.addActionListener(closeSystem);
+            dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
 

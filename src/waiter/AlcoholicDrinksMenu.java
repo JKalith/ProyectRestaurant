@@ -1,30 +1,36 @@
 package Waiter;
 
-import Waiter.Order;
 import static Waiter.Order.txtOrder;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
+ * Este JInternal frame se encarga de mostrar el menú de bebidas alcoholicas,
+ * aquí se van a gestionar las bebidas alcoholicas escogidas y su cantidad.
  *
- * @author Jorshua Solorzano
+ * @author Jorshua Solórzano
  */
 public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
 
     public AlcoholicDrinksMenu() {
+        // Establecer el título de la ventana
         super("Menú de bebidas alcoholicas");
         initComponents();
+//        atributes();
     }
 
- public void saveOrder(JTextArea txtOrder) {
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+    public void saveOrder(JTextArea txtOrder) {
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox cmbAlcoholicDrinks y el JSpinner spnAlcoholicDrinks, respectivamente.
         String selectedAlcoholicDrinks = (String) cmbAlcoholicDrinks.getSelectedItem();
         int quantityAlcoholicDrinks = (int) spnAlcoholicDrinks.getValue();
 
-        // Verificar si se ha seleccionado una opción válida en el JComboBox y el JSpinner
+        // Verificar si se ha seleccionado una opción válida en el JComboBox cmbAlcoholicDrinks y el JSpinner spnAlcoholicDrinks.
         if (selectedAlcoholicDrinks.equals("Elegir...") || quantityAlcoholicDrinks == 0) {
             // Mostrar un mensaje de error 
             JOptionPane.showMessageDialog(null, "Debe seleccionar una opción válida");
@@ -33,37 +39,40 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
 
         // Construir el texto a guardar
         StringBuilder textBuilder = new StringBuilder("Pedido para mesa: ");
-
+        //Guardar las opciones de bebidas alcoholicas seleccionadas que sean validas.
         if (!selectedAlcoholicDrinks.equals("Elegir...")) {
             textBuilder.append(selectedAlcoholicDrinks).append(", ");
         }
-
+        //Guardar las cantidades de bebidas alcoholicas seleccionadas que sean validas.
         if (quantityAlcoholicDrinks != 0) {
             textBuilder.append(quantityAlcoholicDrinks);
         }
 
         String text = textBuilder.toString() + "\n";
 
+        // Agregar la información al txtOrder del JInternal frame Order
+        txtOrder.append(text);
+
+        //Guardar como nuevo pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
+        //Guardar en los pedidos que van para la bar
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Bar.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
 
-        // Agregar la información al JTextArea de destino
-        txtOrder.append(text);
-
+        //Guardar los datos en el historial del punto de venta
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Historial.txt", true))) {
             writer.write(text);
         } catch (IOException e) {
         }
 
-        // Vaciar el contenido del archivo
+        // Vaciar el contenido del archivo para darle campo al siguiente pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", false))) {
             writer.write(" ");
         } catch (IOException e) {
@@ -93,7 +102,7 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(389, 536));
         jPanel1.setRequestFocusEnabled(false);
 
-        cmbAlcoholicDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir...", "Margarita", "Martini", "Mojito ", "Sangria ", "Chiliguaro ", "Piña colada ", "Tequila ", "Ron ", "Cerveza Heineken ", "Cerveza Imperial ", "Cerveza Pilsen ", "Cerveza Corona ", "Vino tinto", "Vino blanco" }));
+        cmbAlcoholicDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir..." }));
         cmbAlcoholicDrinks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAlcoholicDrinksActionPerformed(evt);
@@ -118,18 +127,19 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(btnAddMD)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAddMD)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(79, 79, 79)
-                            .addComponent(cmbAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(spnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(92, 92, 92)
-                            .addComponent(lblAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(lblAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(cmbAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +159,7 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,11 +172,20 @@ public class AlcoholicDrinksMenu extends javax.swing.JInternalFrame {
     private void cmbAlcoholicDrinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAlcoholicDrinksActionPerformed
 
     }//GEN-LAST:event_cmbAlcoholicDrinksActionPerformed
-
+    //Tiene la funcionabilidad de guardar el pedido
     private void btnAddMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMDActionPerformed
         saveOrder(txtOrder);
     }//GEN-LAST:event_btnAddMDActionPerformed
 
+//    public void atributes() {
+//        MealMap mealmap = new MealMap();
+//        String filter = "BA";
+//        try {
+//            mealmap.filtrarPorCodigo(filter, cmbAlcoholicDrinks, spnAlcoholicDrinks);
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(BreakFastMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddMD;

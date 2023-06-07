@@ -2,26 +2,45 @@ package Waiter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
+ * En este JInternal frame se van a llamar los distintos JInternal frames, los
+ * cuales contienen los menús con los que cuenta el punto de venta.
  *
- * @author Jorshua Solorzano
+ * @author Jorshua Solórzano
  */
 public class Order extends javax.swing.JInternalFrame {
 
-    ShakesMenu shakes = new ShakesMenu();
-    SoftDrinksMenu softDrinks = new SoftDrinksMenu();
+    String tableName = "";
+    String filepath = "";
+    
+    //Se instancia el JInternal frame AccompanimentsMenu para usarlo en el evento de btnAccompaniments
     AccompanimentsMenu accompaniments = new AccompanimentsMenu();
+    //Se instancia el JInternal frame AlcoholicDrinksMenu para usarlo en el evento de btnAlcoholicDrinks
     AlcoholicDrinksMenu alcoholicDrinks = new AlcoholicDrinksMenu();
-    BreakFastMenu breakFast = new BreakFastMenu();
+    //Se instancia el JInternal frame BreakFastMenu para usarlo en el evento de btnBreakFast
+    BreakFastMenu breakFast = new BreakFastMenu(tableName);
+    //Se instancia el JInternal frame MenuMainDishes para usarlo en el evento de btnMainDishes
     MenuMainDishes mainDishes = new MenuMainDishes();
+    //Se instancia el JInternal frame ShakesMenu para usarlo en el evento de btnShakes
+    ShakesMenu shakes = new ShakesMenu();
+    //Se instancia el JInternal frame SoftDrinksMenu para usarlo en el evento de btnSoftDrinks
+    SoftDrinksMenu softDrinks = new SoftDrinksMenu();
 
-    public Order() {
+    public Order(String table, String path) {
+        // Establecer el título de la ventana
         super("Pedidos");
         initComponents();
+        this.tableName = table;
+        this.filepath = path;
+        lblTableName.setText("Mesa " + table);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,11 +60,14 @@ public class Order extends javax.swing.JInternalFrame {
         jdpMenus = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         lblOrder = new javax.swing.JLabel();
+        lblOrderInfo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtOrder = new javax.swing.JTextArea();
         lblMenu = new javax.swing.JLabel();
         btnSendOrder = new javax.swing.JButton();
         btnCleanCommand = new javax.swing.JButton();
+        btnUpdateInventary = new javax.swing.JButton();
+        lblTableName = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -58,6 +80,7 @@ public class Order extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1684, 915));
 
         jSplitPane1.setDividerLocation(225);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(1333, 671));
 
         btnBreakFast.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnBreakFast.setText("Desayunos");
@@ -133,17 +156,17 @@ public class Order extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(btnBreakFast, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(32, 32, 32)
                 .addComponent(btnMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(33, 33, 33)
                 .addComponent(btnAccompaniments, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addGap(34, 34, 34)
                 .addComponent(btnSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addGap(50, 50, 50)
                 .addComponent(btnAlcoholicDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(36, 36, 36)
                 .addComponent(btnShakes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);
@@ -159,7 +182,7 @@ public class Order extends javax.swing.JInternalFrame {
         );
         jdpMenusLayout.setVerticalGroup(
             jdpMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
+            .addGap(0, 528, Short.MAX_VALUE)
         );
 
         jLabel2.setText("Pedido");
@@ -167,6 +190,10 @@ public class Order extends javax.swing.JInternalFrame {
         lblOrder.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblOrder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOrder.setText("Pedido");
+
+        lblOrderInfo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblOrderInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOrderInfo.setText("Estado de pedido || Codigo del producto || Nombre del platillo || Precio || Cantidad");
 
         txtOrder.setColumns(20);
         txtOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -186,12 +213,24 @@ public class Order extends javax.swing.JInternalFrame {
         });
 
         btnCleanCommand.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnCleanCommand.setText("Limpiar comanda");
+        btnCleanCommand.setText("Pagar");
         btnCleanCommand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCleanCommandActionPerformed(evt);
             }
         });
+
+        btnUpdateInventary.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnUpdateInventary.setText("Actualizar estado");
+        btnUpdateInventary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateInventaryActionPerformed(evt);
+            }
+        });
+
+        lblTableName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTableName.setText("Mesa #");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -200,25 +239,32 @@ public class Order extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
+                        .addGap(196, 196, 196)
                         .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(613, 613, 613)
+                        .addGap(124, 124, 124)
+                        .addComponent(lblTableName, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(237, 237, 237)
                         .addComponent(lblOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1952, 1952, 1952)
+                        .addGap(2097, 2097, 2097)
                         .addComponent(jLabel2))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(21, 21, 21)
                         .addComponent(jdpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(114, 114, 114)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(59, 59, 59)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblOrderInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(215, 215, 215)
-                                .addComponent(btnSendOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91)
-                                .addComponent(btnCleanCommand, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(32627, Short.MAX_VALUE))
+                                .addGap(241, 241, 241)
+                                .addComponent(btnUpdateInventary))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(btnSendOrder)
+                                .addGap(161, 161, 161)
+                                .addComponent(btnCleanCommand, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,21 +272,30 @@ public class Order extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblMenu)
-                        .addComponent(lblOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jdpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSendOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMenu))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnCleanCommand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(1, 1, 1)))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                                .addComponent(jLabel2)
+                                .addGap(21, 21, 21)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblTableName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(lblOrderInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSendOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCleanCommand, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUpdateInventary, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         jSplitPane1.setRightComponent(jPanel3);
@@ -249,29 +304,32 @@ public class Order extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 156, Short.MAX_VALUE))
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+//Se agrega el JInternal Frame MainDishes al JDesktopPane del JInternal Frame jdpMenus de Order y luego se hace visible.
     private void btnMainDishesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainDishesActionPerformed
         try {
             jdpMenus.add(mainDishes);
@@ -279,19 +337,19 @@ public class Order extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             System.out.println("e = " + e.getMessage());
         }
-
     }//GEN-LAST:event_btnMainDishesActionPerformed
-
+    //Se agrega el JInternal Frame BreakFast al JDesktopPane del JInternal Frame jdpMenus de Order y luego se hace visible.
     private void btnBreakFastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakFastActionPerformed
+        breakFast = new BreakFastMenu(tableName);
         try {
             jdpMenus.add(breakFast);
-            breakFast.setVisible(true);         
+            breakFast.setVisible(true);
         } catch (Exception e) {
             System.out.println("e = " + e.getMessage());
         }
 
     }//GEN-LAST:event_btnBreakFastActionPerformed
-
+    //Se agrega el JInternal Frame AlcoholicDrinks al JDesktopPane del JInternal Frame jdpMenus de Order y luego se hace visible.
     private void btnAlcoholicDrinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlcoholicDrinksActionPerformed
         try {
             jdpMenus.add(alcoholicDrinks);
@@ -300,7 +358,7 @@ public class Order extends javax.swing.JInternalFrame {
             System.out.println("e = " + e.getMessage());
         }
     }//GEN-LAST:event_btnAlcoholicDrinksActionPerformed
-
+    //Se agrega el JInternal Frame Accompaniments al JDesktopPane del JInternal Frame jdpMenus de Order y luego se hace visible.
     private void btnAccompanimentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccompanimentsActionPerformed
         try {
             jdpMenus.add(accompaniments);
@@ -309,7 +367,7 @@ public class Order extends javax.swing.JInternalFrame {
             System.out.println("e = " + e.getMessage());
         }
     }//GEN-LAST:event_btnAccompanimentsActionPerformed
-
+    //Se agrega el JInternal Frame SoftDrinks al JDesktopPane del JInternal Frame jdpMenus de Order y luego se hace visible.
     private void btnSoftDrinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftDrinksActionPerformed
         try {
             jdpMenus.add(softDrinks);
@@ -318,7 +376,7 @@ public class Order extends javax.swing.JInternalFrame {
             System.out.println("e = " + e.getMessage());
         }
     }//GEN-LAST:event_btnSoftDrinksActionPerformed
-
+    //Se agrega el JInternal Frame Shakes al JDesktopPane del JInternal Frame jdpMenus de Order y luego se hace visible.
     private void btnShakesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShakesActionPerformed
         try {
             jdpMenus.add(shakes);
@@ -327,16 +385,61 @@ public class Order extends javax.swing.JInternalFrame {
             System.out.println("e = " + e.getMessage());
         }
     }//GEN-LAST:event_btnShakesActionPerformed
-
+//Tiene la funcionabilidad de guardar el pedido.
     private void btnSendOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendOrderActionPerformed
-
+        try {
+            updateInventary();
+        } catch (IOException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSendOrderActionPerformed
-
+    //Tiene la función de limpiar el área de texto txtOrder.
     private void btnCleanCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanCommandActionPerformed
-        txtOrder.setText(" ");
+        txtOrder.setText("");
     }//GEN-LAST:event_btnCleanCommandActionPerformed
 
+    private void btnUpdateInventaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInventaryActionPerformed
+        try {
+            WaiterInterface waiter = new WaiterInterface();
+            waiter.readTXT(filepath);
+            waiter.filterForCode(tableName, txtOrder, filepath);
+        } catch (IOException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateInventaryActionPerformed
 
+    public void updateInventary() throws IOException {
+        File file = new File(filepath);
+        FileWriter fileWriter = new FileWriter(file, true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        bufferedWriter.write(txtOrder.getText());
+
+        bufferedWriter.close();
+        JOptionPane.showMessageDialog(null, "Se actualizo el pedido correctamente");
+    }
+
+    public void readTXT(String filePath) {
+        try {
+            // Verificar si el archivo existe
+            File file = new File(filePath);
+            if (file.exists()) {
+                // Leer el archivo y almacenar su contenido en un StringBuilder
+                StringBuilder content = new StringBuilder();
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+                reader.close();
+            } else {
+                System.out.println("El archivo no existe.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccompaniments;
@@ -347,6 +450,7 @@ public class Order extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSendOrder;
     private javax.swing.JButton btnShakes;
     private javax.swing.JButton btnSoftDrinks;
+    private javax.swing.JButton btnUpdateInventary;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -356,6 +460,8 @@ public class Order extends javax.swing.JInternalFrame {
     private javax.swing.JDesktopPane jdpMenus;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblOrder;
+    private javax.swing.JLabel lblOrderInfo;
+    private javax.swing.JLabel lblTableName;
     public static javax.swing.JTextArea txtOrder;
     // End of variables declaration//GEN-END:variables
 }

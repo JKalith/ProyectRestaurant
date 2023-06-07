@@ -1,30 +1,34 @@
 package Waiter;
 
-import Waiter.Order;
 import static Waiter.Order.txtOrder;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
- *
- * @author Jorshua Solorzano
+  * Este JInternal frame se encarga de mostrar el menú de refrescos, aquí se van
+ * a gestionar los refrescos escogidos y su cantidad.
+ * @author Jorshua Solórzano
  */
 public class SoftDrinksMenu extends javax.swing.JInternalFrame {
 
     public SoftDrinksMenu() {
+        // Establecer el título de la ventana
         super("Menú de refrescos");
         initComponents();
     }
 
  public void saveOrder(JTextArea txtOrder) {
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox cmbSoftDrinks y el JSpinner spnSoftDrinks, respectivamente.
         String selectedSoftDrinks = (String) cmbSoftDrinks.getSelectedItem();
         int quantitySoftDrinks = (int) spnSoftDrinks.getValue();
 
-        // Verificar si se ha seleccionado una opción válida en el JComboBox y el JSpinner
+        // Verificar si se ha seleccionado una opción válida en el JComboBox cmbSoftDrinks y el JSpinner spnSoftDrinks.
         if (selectedSoftDrinks.equals("Elegir...") || quantitySoftDrinks == 0) {
             // Mostrar un mensaje de error 
             JOptionPane.showMessageDialog(null, "Debe seleccionar una opción válida");
@@ -33,37 +37,39 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
 
         // Construir el texto a guardar
         StringBuilder textBuilder = new StringBuilder("Pedido para mesa: ");
-
+        //Guardar las opciones de refrescos seleccionados que sean validos.
         if (!selectedSoftDrinks.equals("Elegir...")) {
             textBuilder.append(selectedSoftDrinks).append(", ");
         }
-
+        //Guardar las cantidades de refrescos seleccionados que sean validos.
         if (quantitySoftDrinks != 0) {
             textBuilder.append(quantitySoftDrinks);
         }
 
         String text = textBuilder.toString() + "\n";
-
+        
+        // Agregar la información al txtOrder del JInternal frame Order
+        txtOrder.append(text);
+        
+        //Guardar como nuevo pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
+        //Guardar en los pedidos que van para la bar
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Bar.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
-
-        // Agregar la información al JTextArea de destino
-        txtOrder.append(text);
-
+        //Guardar los datos en el historial del punto de venta
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Historial.txt", true))) {
             writer.write(text);
         } catch (IOException e) {
         }
 
-        // Vaciar el contenido del archivo
+        // Vaciar el contenido del archivo para darle campo al siguiente pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", false))) {
             writer.write(" ");
         } catch (IOException e) {
@@ -88,7 +94,7 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(389, 536));
         jPanel1.setRequestFocusEnabled(false);
 
-        cmbSoftDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir...", "Fresco de Limón", "Fresco de Cas", "Fresco de Tamarindo", "Fresco Horchata", "Coca Cola", "Pepsi", "Fanta Colita", "Fanta Naranja", "Fanta Uva", "Ginger ale", "Te frio de melocotón", "Te frio de Limón" }));
+        cmbSoftDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir..." }));
         cmbSoftDrinks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSoftDrinksActionPerformed(evt);
@@ -119,13 +125,13 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cmbSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
                                 .addComponent(spnSoftDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(btnAddMD)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,11 +164,20 @@ public class SoftDrinksMenu extends javax.swing.JInternalFrame {
     private void cmbSoftDrinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSoftDrinksActionPerformed
 
     }//GEN-LAST:event_cmbSoftDrinksActionPerformed
-
+        //Tiene la funcionabilidad de guardar el pedido
     private void btnAddMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMDActionPerformed
         saveOrder(txtOrder);
     }//GEN-LAST:event_btnAddMDActionPerformed
 
+//       public void atributes() {
+//        MealMap mealmap = new MealMap();
+//        String filter = "SD";
+//        try {
+//            mealmap.filtrarPorCodigo(filter, cmbSoftDrinks, spnSoftDrinks);
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(BreakFastMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddMD;

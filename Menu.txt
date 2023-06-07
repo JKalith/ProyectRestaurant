@@ -1,0 +1,18 @@
+BF1, Gallo pinto, 8, 0
+BF2, Gallo de sanchichon, 6, 0
+BF3, Omelette, 4, 0
+MD1, Chifrijo, 10, 0
+MD2, Sopa azteca, 10, 0
+MD3, Rib eye, 17, 0
+A1, Arroz, 3, 0
+A2, Vegetales, 3, 0
+A3, Ensalada, 3, 0
+SD1, Coca cola, 2, 0
+SD2, Ginger ale, 2, 0
+SD3, Tropical, 2, 0
+BA1, Cerveza, 3, 0
+BA2, Mojito, 5, 0
+BA3, Piña colada, 4, 0
+S1, Batido Fresa, 4, 0
+S2, Batido guanabana, 4, 0
+S3, Batido Sandia, 4, 0

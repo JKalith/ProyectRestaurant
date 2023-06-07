@@ -1,22 +1,28 @@
 package Waiter;
 
-import Waiter.Order;
 import static Waiter.Order.txtOrder;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
+ * Este JInternal frame se encarga de mostrar el menú de batidos, aquí se van a
+ * gestionar los batidos escogidos y su cantidad.
  *
- * @author Jorshua Solorzano
+ * @author Jorshua Solórzano
  */
 public class ShakesMenu extends javax.swing.JInternalFrame {
 
     public ShakesMenu() {
+        // Establecer el título de la ventana
         super("Menú de batidos");
         initComponents();
+//        atributes();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +43,7 @@ public class ShakesMenu extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(389, 536));
         jPanel1.setRequestFocusEnabled(false);
 
-        cmbShakes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir...", "Batido de piña", "Batido de fresa", "Batido de mora", "Batido de banano" }));
+        cmbShakes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir..." }));
         cmbShakes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbShakesActionPerformed(evt);
@@ -64,16 +70,16 @@ public class ShakesMenu extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAddMD)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(79, 79, 79)
-                            .addComponent(cmbShakes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cmbShakes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(spnShakes, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(92, 92, 92)
                             .addComponent(lblShakes, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,17 +112,17 @@ public class ShakesMenu extends javax.swing.JInternalFrame {
     private void cmbShakesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbShakesActionPerformed
 
     }//GEN-LAST:event_cmbShakesActionPerformed
-
+    //Tiene la funcionabilidad de guardar el pedido
     private void btnAddMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMDActionPerformed
         saveOrder(txtOrder);
     }//GEN-LAST:event_btnAddMDActionPerformed
 
- public void saveOrder(JTextArea txtOrder) {
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+    public void saveOrder(JTextArea txtOrder) {
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox cmbShakes y el JSpinner spnShakes, respectivamente.
         String selectedShakes = (String) cmbShakes.getSelectedItem();
         int quantityShakes = (int) spnShakes.getValue();
 
-        // Verificar si se ha seleccionado una opción válida en el JComboBox y el JSpinner
+        // Verificar si se ha seleccionado una opción válida en el JComboBox cmbShakes y el JSpinner spnShakes.
         if (selectedShakes.equals("Elegir...") || quantityShakes == 0) {
             // Mostrar un mensaje de error 
             JOptionPane.showMessageDialog(null, "Debe seleccionar una opción válida");
@@ -125,42 +131,56 @@ public class ShakesMenu extends javax.swing.JInternalFrame {
 
         // Construir el texto a guardar
         StringBuilder textBuilder = new StringBuilder("Pedido para mesa: ");
-
+        //Guardar las opciones de batidos seleccionados que sean validos.
         if (!selectedShakes.equals("Elegir...")) {
             textBuilder.append(selectedShakes).append(", ");
         }
-
+        //Guardar las cantidades de batidos seleccionados que sean validos.
         if (quantityShakes != 0) {
             textBuilder.append(quantityShakes);
         }
 
         String text = textBuilder.toString() + "\n";
 
+        // Agregar la información al txtOrder del JInternal frame Order
+        txtOrder.append(text);
+
+        //Guardar como nuevo pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
+        
+        //Guardar en los pedidos que van para la bar
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Bar.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
 
-        // Agregar la información al JTextArea de destino
-        txtOrder.append(text);
-
+        //Guardar los datos en el historial del punto de venta
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Historial.txt", true))) {
             writer.write(text);
         } catch (IOException e) {
         }
 
-        // Vaciar el contenido del archivo
+        // Vaciar el contenido del archivo para darle campo al siguiente pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", false))) {
             writer.write(" ");
         } catch (IOException e) {
         }
     }
+    
+//           public void atributes() {
+//        MealMap mealmap = new MealMap();
+//        String filter = "S";
+//        try {
+//            mealmap.filtrarPorCodigo(filter, cmbShakes, spnShakes);
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(BreakFastMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddMD;

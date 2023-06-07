@@ -3,20 +3,25 @@ package Waiter;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import Waiter.Order;
 import static Waiter.Order.txtOrder;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
- *
- * @author Jorshua Solorzano
+ *Este JInternal frame se encarga de mostrar el menú de platos fuertes, aquí se van a gestionar los platos fuertes escogidos 
+ *y su cantidad.
+ * @author Jorshua Solórzano
  */
 public class MenuMainDishes extends javax.swing.JInternalFrame {
 
     public MenuMainDishes() {
+        // Establecer el título de la ventana
         super("Menú de platos fuertes");
         initComponents();
+//        atributes();
     }
 
     @SuppressWarnings("unchecked")
@@ -43,7 +48,7 @@ public class MenuMainDishes extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(389, 536));
         jPanel1.setRequestFocusEnabled(false);
 
-        cmbMainDishes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir...", "Arroz con pollo", "Arroz con camarones", "Casado de carne en salsa", "Casado de chuleta de cerdo", "Filete de pollo a la plancha", "Bistec de res encebollado", "Filete de pescado con papas", "Costilla de Cerdo con salsa BBQ", "Alitas de Pollo con salsa BBQ", "Hamburguesa sencilla", "Hamburguesa con papas ", "Macarrones con salsa y bolitas de carne", "Macarrones en salsa blanca con pollo" }));
+        cmbMainDishes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir..." }));
         cmbMainDishes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cmbMainDishesMousePressed(evt);
@@ -75,17 +80,17 @@ public class MenuMainDishes extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(lblMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cmbMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(spnMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(btnAddMD)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addComponent(btnAddMD))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmbMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(89, 89, 89)
+                                .addComponent(spnMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblMainDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,22 +121,23 @@ public class MenuMainDishes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbMainDishesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMainDishesActionPerformed
-
     }//GEN-LAST:event_cmbMainDishesActionPerformed
+
+    //Tiene la funcionabilidad de guardar el pedido
     private void btnAddMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMDActionPerformed
         saveOrder(txtOrder);
     }//GEN-LAST:event_btnAddMDActionPerformed
 
     private void cmbMainDishesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbMainDishesMousePressed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbMainDishesMousePressed
 
     public void saveOrder(JTextArea txtOrder) {
-        // Obtener el desayuno seleccionado y la cantidad del JComboBox y el JSpinner, respectivamente
+        // Obtener el desayuno seleccionado y la cantidad del JComboBox cmbMainDishes y el JSpinner spnMainDishes, respectivamente.
         String selectedMainDishes = (String) cmbMainDishes.getSelectedItem();
         int quantityMainDishes = (int) spnMainDishes.getValue();
 
-        // Verificar si se ha seleccionado una opción válida en el JComboBox y el JSpinner
+        // Verificar si se ha seleccionado una opción válida en el JComboBox cmbMainDishes y el JSpinner spnMainDishes.
         if (selectedMainDishes.equals("Elegir...") || quantityMainDishes == 0) {
             // Mostrar un mensaje de error 
             JOptionPane.showMessageDialog(null, "Debe seleccionar una opción válida");
@@ -140,43 +146,54 @@ public class MenuMainDishes extends javax.swing.JInternalFrame {
 
         // Construir el texto a guardar
         StringBuilder textBuilder = new StringBuilder("Pedido para mesa: ");
-
+        //Guardar las opciones de platos fuertes seleccionadas que sean validas.
         if (!selectedMainDishes.equals("Elegir...")) {
             textBuilder.append(selectedMainDishes).append(", ");
         }
-
+        //Guardar las cantidades de platos fuertes seleccionadas que sean validas.
         if (quantityMainDishes != 0) {
             textBuilder.append(quantityMainDishes);
         }
-
+        
         String text = textBuilder.toString() + "\n";
-
+        
+        // Agregar la información al txtOrder del JInternal frame Order
+        txtOrder.append(text);
+        
+        //Guardar como nuevo pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
+        //Guardar en los pedidos que van para la cocina
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Kitchen.txt", true))) {
             writer.write(text);
             writer.newLine();
         } catch (IOException e) {
         }
-
-        // Agregar la información al JTextArea de destino
-        txtOrder.append(text);
-
+        //Guardar los datos en el historial del punto de venta
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Historial.txt", true))) {
             writer.write(text);
         } catch (IOException e) {
         }
 
-        // Vaciar el contenido del archivo
+        // Vaciar el contenido del archivo para darle campo al siguiente pedido
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Order.txt", false))) {
             writer.write(" ");
         } catch (IOException e) {
         }
     }
 
+//        public void atributes(){
+//    MealMap mealmap = new MealMap();
+//        String filter = "MD";
+//        try {
+//            mealmap.filtrarPorCodigo(filter, cmbMainDishes, spnMainDishes);
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(BreakFastMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAddMD;
